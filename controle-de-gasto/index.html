@@ -12,10 +12,13 @@
             <div><label>Email:</label></div>
             <input id="email" type="email" name="email" onchange="validateFields()" placeholder="seu@email.com">
         </div>
+        <div class="error" id="email-required-error">Email é obrigadorio</div>
+        <div class="error" id="email-invalid-error">Email é invalido</div>
         <div>
             <div><label>Senha:</label></div>
             <input id="password" type="password" name="password" onchange="validateFields()" placeholder="Senha">
         </div>
+        <div class="error">Senha é obrigadoria</div>
         <div>
             <button id="recover-password-button" type="button" class="clear" disabled="true" >Recuperar Senha</button>
         </div>
