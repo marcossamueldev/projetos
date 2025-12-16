@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String        @id @default(uuid())
+  email            String        @unique
+  passwordHash     String
+  createdAt        DateTime      @default(now())
+  subscriptionPlan String        @default("FREE") // FREE, PRO, ENTERPRISE
+  bankAccounts     BankAccount[]
+  transactions     Transaction[]
+  categories       Category[]
+  rules            UserRule[]
+  logs             Log[]
+
+  @@map("users")
+}
+
+model BankAccount {
+  id             String        @id @default(uuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  bankName       String        // e.g., "ITAU", "NUBANK"
+  encryptedToken String
+  lastSync       DateTime?
+  isActive       Boolean       @default(true)
+  transactions   Transaction[]
+
+  @@map("bank_accounts")
+}
+
+model Category {
+  id           String        @id @default(uuid())
+  userId       String?       // Null means system default category
+  user         User?         @relation(fields: [userId], references: [id])
+  name         String
+  type         String        // EXPENSE, INCOME
+  transactions Transaction[]
+  UserRule     UserRule[]
+
+  @@map("categories")
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  accountId   String
+  account     BankAccount @relation(fields: [accountId], references: [id])
+  userId      String   // Denormalized for query optimization
+  user        User     @relation(fields: [userId], references: [id]) 
+  externalId  String   @unique // ID from the bank
+  amount      Decimal
+  date        DateTime
+  description String
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  type        String   // CREDIT, DEBIT
+  status      String   // PENDING, CONFIRMED
+  createdAt   DateTime @default(now())
+
+  @@map("transactions")
+}
+
+model UserRule {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  pattern     String   // Regex or substring to match description
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@map("user_rules")
+}
+
+model Log {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
+  details   Json?
+  timestamp DateTime @default(now())
+
+  @@map("logs")
+}
