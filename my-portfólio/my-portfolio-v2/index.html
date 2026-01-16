@@ -1,68 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
     <title>Portifólio</title>
-  </head>
-  <body>
+</head>
+
+<body>
+    <div class="particulas"></div>
+
+
     <nav class="navegacao">
-      <ul class="menu">
-        <li>
-          <a href="#inicio">Inicio</a>
-        </li>
-        <li>
-          <a href="#sobre">Sobre</a>
-        </li>
-        <li>
-          <a href="#projetos">Projetos</a>
-        </li>
-        <li>
-          <a href="#contatos">Contatos</a>
-        </li>
-      </ul>
+        <ul class="menu">
+            <li>
+                <a href="#inicio" class="menu-link">Inicio</a>
+            </li>
+            <li>
+                <a href="#sobre" class="menu-link">Sobre</a>
+            </li>
+            <li>
+                <a href="#projetos" class="menu-link">Projetos</a>
+            </li>
+            <li>
+                <a href="#contatos" class="menu-link">Contatos</a>
+            </li>
+        </ul>
     </nav>
 
     <main id="inicio" class="cabecalho">
-      <div>
-        <img
-          src="img/fotoperfil.jpeg"
-          alt="foto de perfil"
-          class="foto-perfil"
-        />
+        <img src="img/fotoperfil.jpeg" alt="foto de perfil" class="foto-perfil" />
         <h1>Marcos Samuel</h1>
-        <p>Desenvolvedor fullstack jr</p>
-      </div>
+        <p class="cabecalho-subtitulo">Desenvolvedor Full Stack Jr | Node.js | React | PostgreSQL | ADS | JavaScript | express | HTML CSS | MySQL | MongoDB | Git</p>
     </main>
 
     <section id="sobre" class="sobre">
-      <h2 class="sobre-titulo">Sobre Mim</h2>
-      <div class="sobre-caixa">
-        <p class="sobre-paragrafo">
-          Sou estudante de Análise e Desenvolvimento de Sistemas e desenvolvedor
-          em formação, com foco em desenvolvimento web full stack. Tenho
-          experiência prática com HTML, CSS, JavaScript, React, Node.js, Express
-          e bancos de dados SQL, aplicando esses conhecimentos no
-          desenvolvimento de projetos próprios, sempre buscando código limpo,
-          organização e boas práticas. Estou em transição de carreira e em
-          constante evolução, estudando diariamente para me tornar um
-          desenvolvedor cada vez mais completo. Tenho facilidade para aprender
-          novas tecnologias, gosto de resolver problemas reais e transformar
-          ideias em soluções funcionais. Busco minha primeira oportunidade na
-          área de desenvolvimento, onde eu possa crescer profissionalmente,
-          contribuir com o time e evoluir tecnicamente.
-        </p>
-      </div>
+        <h2 class="sobre-titulo">Sobre Mim</h2>
+        <div class="sobre-caixa">
+            <p class="sobre-paragrafo">
+                Sou estudante de Análise e Desenvolvimento de Sistemas e desenvolvedor
+                em formação, com foco em desenvolvimento web full stack. Tenho
+                experiência prática com HTML, CSS, JavaScript, React, Node.js, Express
+                e bancos de dados SQL, aplicando esses conhecimentos no
+                desenvolvimento de projetos próprios, sempre buscando código limpo,
+                organização e boas práticas. Estou em transição de carreira e em
+                constante evolução, estudando diariamente para me tornar um
+                desenvolvedor cada vez mais completo. Tenho facilidade para aprender
+                novas tecnologias, gosto de resolver problemas reais e transformar
+                ideias em soluções funcionais. Busco minha primeira oportunidade na
+                área de desenvolvimento, onde eu possa crescer profissionalmente,
+                contribuir com o time e evoluir tecnicamente.
+            </p>
+        </div>
     </section>
 
     <section id="projetos" class="projetos">
         <h2 class="projetos-titulo">Meus Projetos</h2>
         <div class="projetos-caixa">
+
             <div class="projetos-card">
-            <img src="" alt="">
-            <h3>Projeto 1: To-Do List</h3>
-            <p>Descrição: Aplicação web para gerenciar tarefas diárias.</p>
-            <a href="https://github.com/marcossamuel/todo-list">Ver projeto</a>
+                <img src="img/site-cafeteria.png" alt="projeto 2" class="projeto-imagem" />
+                <div class="caixa-textos-projetos">
+                    <h3 class="info-projetos">Projeto 2: site-cafeteria</h3>
+                    <p class="paragrafo-projetos">Descrição: sistema para site cafeteria.</p>
+                    <a href="https://marcossamueldev.github.io/estudos-html-css-/estudosiniciais/site-cafeteria/">Ver
+                        projeto</a>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="img/site-cafeteria.png" alt="projeto 2" class="projeto-imagem" />
+                <div class="caixa-textos-projetos">
+                    <h3 class="info-projetos">Projeto 2: site-cafeteria</h3>
+                    <p class="paragrafo-projetos">Descrição: sistema para site cafeteria.</p>
+                    <a href="https://marcossamueldev.github.io/estudos-html-css-/estudosiniciais/site-cafeteria/">Ver
+                        projeto</a>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="img/site-cafeteria.png" alt="projeto 2" class="projeto-imagem" />
+                <div class="caixa-textos-projetos">
+                    <h3 class="info-projetos">Projeto 2: site-cafeteria</h3>
+                    <p class="paragrafo-projetos">Descrição: sistema para site cafeteria.</p>
+                    <a href="https://marcossamueldev.github.io/estudos-html-css-/estudosiniciais/site-cafeteria/">Ver
+                        projeto</a>
+                </div>
+            </div>
+
+        </div>
     </section>
-  </body>
+
+    <section id="contatos" class="contatos">
+        <h2 class="contatos-titulo">Entre em Contato</h2>
+        <form class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
+            <div class="grupo-form">
+                <input placeholder="Nome" class="campo-form" id="nome">
+            </div>
+            <div class="grupo-form">
+                <textarea placeholder="Digite sua Mensagem" class="campo-form" rows="6" id="mensagem"></textarea>
+            </div>
+
+            <button type="submit" class="botao-form">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <script>
+    function enviarWhats(event) {
+        event.preventDefault();
+        const nome = document.getElementById('nome');
+        const mensagem = document.getElementById('mensagem');
+        const telefone = "5562995141626";
+
+        const texto = `Olá, ${nome.value}. ${mensagem.value}`;
+        const mgsFormatada = encodeURIComponent(texto);
+
+        const url = `https://wa.me/${telefone}?text=${mgsFormatada}`;
+
+        window.open(url, '_blank');
+    }
+    </script>
+
+</body>
+
 </html>
